@@ -1,6 +1,7 @@
 <script setup>
 import anime from "animejs";
 import moment from "moment-timezone";
+import {useIntervalFn} from "@vueuse/core";
 
 useHead({
     title: 'Checkbox Racing',
@@ -37,6 +38,8 @@ function handleClickOutsideBox() {
 function handleClickCheckBox() {
     currentBoxIndexToBeClicked++;
     checkBoxesRef.value[currentBoxIndexToBeClicked - 1].enabled = false
+    console.log(checkBoxesRef.value.length)
+    console.log(currentBoxIndexToBeClicked)
     if (checkBoxesRef.value.length <= currentBoxIndexToBeClicked) {
         handleWin()
         return
@@ -71,7 +74,7 @@ function handleStart() {
         return
     }
     started = true
-    timer = setInterval(() => {
+    timer = useIntervalFn(() => {
         timeElapsed.value = moment.utc(Date.now() - startTime).format('mm:ss:SS')
     }, 10);
     startTime = Date.now()

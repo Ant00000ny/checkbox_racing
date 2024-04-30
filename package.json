@@ -18,6 +18,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/nuxt": "^10.9.0",
     "animejs": "^3.2.2",
     "moment-timezone": "^0.5.45",
     "nuxt-icon": "^0.6.10"
